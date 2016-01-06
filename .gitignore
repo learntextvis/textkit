@@ -1,0 +1,9 @@
+*.pyc
+*.swp
+.DS_Store
+build
+textkit.egg-info
+dist
+*.swo
+.coverage
+.tox
