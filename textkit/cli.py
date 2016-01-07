@@ -1,5 +1,6 @@
 import click
-from textkit.tokenize import text2words, text2sentences
+from textkit.tokenize.words import text2words
+from textkit.tokenize.sentences import text2sentences
 from textkit.filter import filterpunc
 
 
