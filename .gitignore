@@ -7,3 +7,4 @@ dist
 *.swo
 .coverage
 .tox
+.cache
