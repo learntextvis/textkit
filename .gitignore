@@ -8,3 +8,4 @@ dist
 .coverage
 .tox
 .cache
+docs/_build
