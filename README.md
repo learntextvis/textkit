@@ -2,7 +2,6 @@
 
 Command line tools for text processing and analysis.
 
-
 ## About
 
 `textkit` is a series of small, unix-style tools that provide a suite of capabilities for
@@ -17,7 +16,13 @@ Here are some of the cool things you can do with textkit.
 Convert a document to a set of word tokens and remove all punctuation from the tokens:
 
 ```
-textkit text2words input.txt | textkit filterpunc
+textkit text2words input.txt | textkit filterpunc -
+```
+
+Count top used words in a text:
+
+```
+textkit text2words alice.txt | textkit count - | head
 ```
 
 ## Installation
@@ -57,3 +62,5 @@ Will show all the commands available. You can also get help on a particular comm
 ```
 textkit text2words --help
 ```
+
+Chaining of textkit commands is possible (and encouraged) with unix pipes (`|`). Use the dash `-` to indicate the output of a previous command should be used as input for the next command.
