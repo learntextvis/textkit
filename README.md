@@ -25,6 +25,12 @@ Count top used words in a text:
 textkit text2words alice.txt | textkit count - | head
 ```
 
+Do the same, but with punctuation removed:
+
+```
+textkit text2words alice.txt | textkit filterpunc - | textkit count - | head
+```
+
 ## Installation
 
 To test locally, clone the repo:
@@ -33,15 +39,31 @@ To test locally, clone the repo:
 git clone git@github.com:learntextvis/textkit.git
 ```
 
-then use `pip` to install the repo in a local virtual environment or `conda` environment
+Create a local virtual environment or `conda` environment.
+
+Here is how I created my local `conda` environment for installing and testing textkit:
+
+```
+conda create -name textkit nltk
+
+source activate textkit
+```
+
+Then I went into the `textkit` directory to install its requirements
 
 ```
 cd textkit
 
+pip install -r requirements.txt
+```
+
+Finally, I installed the local version of textkit using the `--editable` flag:
+
+```
 pip install --editable .
 ```
 
-_In the future:_
+_In the future basic installation instructions will be just the following:_
 
 textkit is available via `pip`
 
