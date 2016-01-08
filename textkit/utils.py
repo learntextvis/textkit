@@ -12,5 +12,4 @@ def output(line):
     try:
         click.echo(line)
     except (BrokenPipeError, IOError):
-        pass
-    sys.stderr.close()
+        sys.stderr.close()

@@ -1,6 +1,6 @@
 import click
 from string import punctuation
-from textkit.utils import read_tokens
+from textkit.utils import output, read_tokens
 
 
 @click.command()
@@ -12,5 +12,5 @@ from textkit.utils import read_tokens
 def filterpunc(tokens):
     '''Remove tokens that are only punctuation from a list of tokens.'''
     content = read_tokens(tokens)
-    [click.echo(token) for token in content
+    [output(token) for token in content
         if token not in punctuation]
