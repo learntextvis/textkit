@@ -10,6 +10,7 @@ from textkit.transform.uppercase import uppercase
 from textkit.transform.newlines import nonewlines
 from textkit.package.tokens_to_json import tokens2json
 from textkit.package.texts_to_json import texts2json
+from textkit.package.tokens_to_text import tokens2text
 
 
 @click.group()
@@ -29,3 +30,4 @@ cli.add_command(uppercase)
 cli.add_command(nonewlines)
 cli.add_command(tokens2json)
 cli.add_command(texts2json)
+cli.add_command(tokens2text)
