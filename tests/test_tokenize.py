@@ -1,5 +1,6 @@
 from click.testing import CliRunner
 from textkit.tokenize.words import text2words
+from textkit.tokenize.bigrams import words2bigrams
 
 
 def test_text2words():
@@ -14,3 +15,17 @@ def test_text2words():
 
         assert result.exit_code == 0
         assert tokens[0] == 'Hello'
+
+
+def test_words2bigrams():
+    runner = CliRunner()
+    with runner.isolated_filesystem():
+        filename = 'in.txt'
+        with open(filename, 'w') as f:
+            f.write('Hello\nWorld\n!\nI\nlove\ngo\n.')
+
+        result = runner.invoke(words2bigrams, [filename])
+        tokens = result.output.split('\n')
+        assert result.exit_code == 0
+        assert tokens[0] == 'Hello World'
+        assert tokens[1] == 'World !'
