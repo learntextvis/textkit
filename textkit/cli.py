@@ -2,6 +2,7 @@ import click
 from textkit.tokenize.words import text2words
 from textkit.tokenize.sentences import text2sentences
 from textkit.tokenize.bigrams import words2bigrams
+from textkit.tokenize.punc import text2punc
 from textkit.filter.filter_punc import filterpunc
 from textkit.stats.count_tokens import count_tokens
 from textkit.transform.lowercase import lowercase
@@ -20,6 +21,7 @@ def cli():
 cli.add_command(text2words)
 cli.add_command(text2sentences)
 cli.add_command(words2bigrams)
+cli.add_command(text2punc)
 cli.add_command(filterpunc)
 cli.add_command(count_tokens)
 cli.add_command(lowercase)
