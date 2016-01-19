@@ -1,0 +1,19 @@
+language: python
+before_script:
+- git config --global user.name "Teracy"
+- git config --global user.email "your-friends@teracy.com"
+- export REPO_URL_GITHUB="https://$GH_TOKEN@github.com/$GH_REPO.git"
+- . ./.travis/setup.sh
+- echo $DEPLOY_HTML_DIR
+after_script:
+- sudo pip install -r docs/requirements.txt --use-mirrors
+- cd docs
+- make setup_gh_pages
+- make generate
+- make deploy
+env:
+  global:
+  - GH_REPO="teracyhq/sphinx-deployment"
+notifications:
+  slack:
+    secure: RhiJy6C19bKjM8fY5oHFSBAyHgRRDr+ZiYhK5QwlitpQmSCsABLsVGWpIrD+aA0nPKs6khtmNFUoEsXtzol65CsvV2m70SQbVK3OCbOwXd6xRSLw8hb1p+SOnpqu/VvZ89iayVl7J9Y8WpJQlUfobMXZgequED7mSRo9+bdBB4E=
