@@ -52,7 +52,7 @@ endif
 
 # Copy contents from $(BUILDDIR) to $(DEPLOY_DIR)/$(DEPLOY_HTML_DIR) directory
 ifndef DEPLOY_HTML_DIR
-DEPLOY_HTML_DIR = docs
+DEPLOY_HTML_DIR = .
 endif
 
 
