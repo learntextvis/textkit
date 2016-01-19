@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial: Quickstart &mdash; textkit 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="textkit 0.0.1 documentation" href="index.html" />
+    <link rel="prev" title="Installation" href="install.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">textkit 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tutorial-quickstart">
+<span id="quickstart"></span><h1>Tutorial: Quickstart<a class="headerlink" href="#tutorial-quickstart" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><span class="target" id="module-textkit.cli"></span></div></blockquote>
+<div class="section" id="convert-text-to-tokens">
+<h2>Convert Text to Tokens<a class="headerlink" href="#convert-text-to-tokens" title="Permalink to this headline">¶</a></h2>
+<p>Tokenization is the process of turning text into chunks of text.
+These chunks can be sentences, words, or even sections of words.</p>
+<p>Textkit converts a text file into a <strong>token document</strong> - where each line has one token per line.</p>
+<p>Here, we convert a text file into a token document where each token is a word.</p>
+<div class="highlight-python"><div class="highlight"><pre>textkit text2words input.txt
+</pre></div>
+</div>
+<p>Output goes to standard out. You can redirect with <code class="docutils literal"><span class="pre">&gt;</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre>textkit text2words input.txt &gt; words.txt
+</pre></div>
+</div>
+<p>We can also get <strong>bigrams</strong> (two word tokens).</p>
+<div class="highlight-python"><div class="highlight"><pre>textkit text2words input.txt  textkit words2bigrams - &gt; bigrams.txt
+</pre></div>
+</div>
+<p>Here we first convert the text to word tokens and use that as the input for the bigram tokenization.</p>
+<p>Any command that uses <code class="docutils literal"><span class="pre">words</span></code> expects to work with <strong>token documents</strong> that have one word per line.</p>
+</div>
+<div class="section" id="filter-and-transform">
+<h2>Filter and Transform<a class="headerlink" href="#filter-and-transform" title="Permalink to this headline">¶</a></h2>
+<p>Once you have your text tokenized, you can filter out tokens you might not want in your document.</p>
+<p>Let&#8217;s remove punctuation from the <code class="docutils literal"><span class="pre">words.txt</span></code> file.</p>
+<div class="highlight-python"><div class="highlight"><pre>textkit filterpunc words.txt
+</pre></div>
+</div>
+<p>We can also transform the tokens in various ways, such as through lowercasing everything:</p>
+<div class="highlight-python"><div class="highlight"><pre>textkit lowercaser words.txt
+</pre></div>
+</div>
+</div>
+<div class="section" id="package">
+<h2>Package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h2>
+<p>Once the tokens are setup and transformed the way you want them,
+it can be useful to package up a set of documents into a single file for downstream visualization or other uses.</p>
+<div class="highlight-python"><div class="highlight"><pre>textkit tokens2json words1.txt words2.txt &gt; out.json
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="index.html"><img class="logo" src="_static/logo.png" height="200" width="230" alt="Logo"/></a>
+</p>
+
+<p>
+Command line tools for text processing and analysis.
+</p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorial: Quickstart</a><ul>
+<li><a class="reference internal" href="#convert-text-to-tokens">Convert Text to Tokens</a></li>
+<li><a class="reference internal" href="#filter-and-transform">Filter and Transform</a></li>
+<li><a class="reference internal" href="#package">Package</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="install.html" title="previous chapter">Installation</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2016 <a href="http://learntextvis.github.io/">LearnTextVis</a>.
+    </div>
+    <a href="https://github.com/learntextvis/textkit" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+  </body>
+</html>
