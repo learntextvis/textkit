@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import click
 from textkit.tokenize.words import text2words
 from textkit.tokenize.sentences import text2sentences

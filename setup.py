@@ -9,13 +9,14 @@ setup(
     version='0.0.1',
     py_modules=['textkit'],
     url='https://github.com/learntextvis/textkit',
-    keywords=['text','analysis', 'textkit'],
+    keywords=['text', 'analysis', 'textkit'],
     install_requires=[
         'click>=6.2',
         'nltk>=3.1'
     ],
-    entry_points='''
-        [console_scripts]
-        textkit=textkit.cli:cli
-    ''',
+    entry_points={
+     'console_scripts': [
+        'textkit = textkit.cli:cli'
+     ]
+    }
 )
