@@ -90,7 +90,7 @@ endif
 #if REPO_URL_GITHUB was NOT defined by travis-ci
 ifndef REPO_URL_GITHUB
 # Configure your right github project repo
-# REPO_URL       = git@github.com:teracy-official/sphinx-deployment.git
+REPO_URL_GITHUB       = git@github.com:learntextvis/textkit.git
 endif
 
 ## -- Heroku Deployment Config -- ##
@@ -114,8 +114,10 @@ init_gh_pages:
 	@cd $(DEPLOY_DIR); git init;\
 		echo 'sphinx docs comming soon...' > index.html;\
 		touch .nojekyll;\
-		git add .; git commit -m "sphinx docs init";\
+		git add .;\
+		git commit -m "sphinx docs init";\
 		git branch -m $(DEPLOY_BRANCH_GITHUB);\
+		echo $(DEPLOY_BRANCH_GITHUB) > index.html;\
 		git remote add origin $(REPO_URL_GITHUB);
 	@cd $(DEPLOY_DIR);\
 		if ! git ls-remote origin $(DEPLOY_BRANCH_GITHUB) | grep $(DEPLOY_BRANCH_GITHUB) ; then \
