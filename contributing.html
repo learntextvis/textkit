@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Contributing &mdash; textkit 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="textkit 0.0.1 documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">textkit 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="contributing">
+<span id="id1"></span><h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h1>
+<p>If you are interested in contributing to textkit we would love your help!</p>
+<p>Here is a bit more about the structure of the codebase and how to contribute.</p>
+<div class="section" id="code-structure">
+<h2>Code Structure<a class="headerlink" href="#code-structure" title="Permalink to this headline">¶</a></h2>
+<p>Each command is implemented in its own file. These command files are organized into
+sub-directories:</p>
+<ul class="simple">
+<li>tokenize</li>
+<li>filter</li>
+<li>transform</li>
+<li>stats</li>
+<li>package</li>
+</ul>
+<p>The use of these sub-directories is primarily for developer convenience and commands
+can be moved around if a better structure is found.</p>
+</div>
+<div class="section" id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+<p>textkit uses <a class="reference external" href="http://click.pocoo.org/">Click</a>. to handle command line arguments
+and inputs. Click uses decorators to define these arguments and options in a succinct way.</p>
+<p>textkit strives to use text as an input and text as an output. Raw text can be processed
+using commands that start with <code class="docutils literal"><span class="pre">text2</span></code> like <code class="docutils literal"><span class="pre">text2words</span></code>.</p>
+<p>Token documents (text files with a token on each line) can be used and produced by
+commands that include <code class="docutils literal"><span class="pre">words</span></code> in the name.</p>
+</div>
+<div class="section" id="utilities">
+<h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h2>
+<p>There are a very small set of utility functions that are useful in keeping textkit</p>
+<p>These are contained in the <code class="docutils literal"><span class="pre">utils.py</span></code> file. Some that you might find helpful:</p>
+<p><code class="docutils literal"><span class="pre">read_tokens</span></code> will convert a token document into a list of tokens. Use this to process the
+input file if your input is a token document.</p>
+<p><code class="docutils literal"><span class="pre">output</span></code> is a light wrapper around the output capabilities of Click that prevents
+error messages if the command is exited early (like when piping to <code class="docutils literal"><span class="pre">head</span></code>).</p>
+</div>
+<div class="section" id="writing-new-commands">
+<h2>Writing New Commands<a class="headerlink" href="#writing-new-commands" title="Permalink to this headline">¶</a></h2>
+<p>Want to contribute a new command? Great!</p>
+<p>textkit uses GitHub Pull Requests to incorporate other developer&#8217;s work.</p>
+<p>Fork the repo and then create a branch for your new command. Create and test it,
+then submit a Pull Request.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="index.html"><img class="logo" src="_static/logo.png" height="200" width="230" alt="Logo"/></a>
+</p>
+
+<p>
+Command line tools for text processing and analysis.
+</p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Contributing</a><ul>
+<li><a class="reference internal" href="#code-structure">Code Structure</a></li>
+<li><a class="reference internal" href="#commands">Commands</a></li>
+<li><a class="reference internal" href="#utilities">Utilities</a></li>
+<li><a class="reference internal" href="#writing-new-commands">Writing New Commands</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2016 <a href="http://learntextvis.github.io/">LearnTextVis</a>.
+    </div>
+    <a href="https://github.com/learntextvis/textkit" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+  </body>
+</html>
