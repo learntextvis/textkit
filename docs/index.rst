@@ -29,3 +29,4 @@ Guide
 
    install
    quickstart
+   contributing
