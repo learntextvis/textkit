@@ -11,5 +11,5 @@ def read_tokens(file):
 def output(line):
     try:
         click.echo(line)
-    except (BrokenPipeError, IOError):
+    except (OSError, IOError):
         sys.stderr.close()
