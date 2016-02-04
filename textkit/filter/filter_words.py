@@ -28,3 +28,13 @@ def filterwords(language, custom, tokens):
 
     [output(token) for token in content
         if token.lower() not in stopwords]
+
+
+@click.command()
+@click.option('-l', '--language', type=click.Choice(['english', 'german']),
+              default='english')
+def showstops(language):
+    '''Display stop words used by textkit for a given language.'''
+    stopwords = get_stopwords(language)
+
+    [output(token) for token in stopwords]
