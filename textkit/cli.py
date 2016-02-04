@@ -6,6 +6,7 @@ from textkit.tokenize.sentences import text2sentences
 from textkit.tokenize.bigrams import words2bigrams
 from textkit.tokenize.punc import text2punc
 from textkit.filter.filter_punc import filterpunc
+from textkit.filter.filter_words import filterwords
 from textkit.transform.lowercase import lowercase
 from textkit.transform.uppercase import uppercase
 from textkit.transform.newlines import nonewlines
@@ -27,6 +28,7 @@ cli.add_command(text2sentences)
 cli.add_command(words2bigrams)
 cli.add_command(text2punc)
 cli.add_command(filterpunc)
+cli.add_command(filterwords)
 cli.add_command(lowercase)
 cli.add_command(uppercase)
 cli.add_command(nonewlines)
