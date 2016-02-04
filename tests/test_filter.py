@@ -2,6 +2,31 @@ import click
 from click.testing import CliRunner
 from textkit.filter.filter_punc import filterpunc
 from textkit.filter.filter_words import filterwords
+from textkit.filter.filter_lengths import filterlengths
+
+
+def test_filterlengths():
+    runner = CliRunner()
+    with runner.isolated_filesystem():
+        filename = 'in.txt'
+        with open(filename, 'w') as f:
+            f.write('Hello\nWorld\n!\nI\n.\nnot\nwin\n')
+
+        result = runner.invoke(filterlengths, [filename])
+
+        assert result.exit_code == 0
+        assert '!' not in result.output
+        assert '.' not in result.output
+        assert 'not' in result.output
+        assert 'World' in result.output
+
+        result = runner.invoke(filterlengths, ['-m', '4', filename])
+
+        assert result.exit_code == 0
+        assert '!' not in result.output
+        assert '.' not in result.output
+        assert 'not' not in result.output
+        assert 'World' in result.output
 
 
 def test_filterpunc():
@@ -31,6 +56,7 @@ def test_filterwords():
         assert result.exit_code == 0
         assert 'I' not in result.output
         assert 'am' not in result.output
+
 
 def test_filterwords_custom():
     runner = CliRunner()
