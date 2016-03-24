@@ -4,6 +4,7 @@ import click
 from textkit.tokenize.words import text2words
 from textkit.tokenize.sentences import text2sentences
 from textkit.tokenize.bigrams import words2bigrams
+from textkit.tokenize.ngrams import words2ngrams
 from textkit.tokenize.punc import text2punc
 from textkit.filter.filter_punc import filterpunc
 from textkit.filter.filter_words import filterwords
@@ -19,6 +20,7 @@ from textkit.stats.count_tokens import count_tokens
 from textkit.stats.top_bigrams import top_bigrams
 
 
+
 @click.group()
 def cli():
     '''Text analysis from the command line.
@@ -28,6 +30,7 @@ def cli():
 cli.add_command(text2words)
 cli.add_command(text2sentences)
 cli.add_command(words2bigrams)
+cli.add_command(words2ngrams)
 cli.add_command(text2punc)
 cli.add_command(filterpunc)
 cli.add_command(filterwords)
