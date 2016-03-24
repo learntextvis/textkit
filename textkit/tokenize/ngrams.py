@@ -13,7 +13,7 @@ from textkit.utils import output, read_tokens
               show_default=True)
 
 def words2ngrams(sep, n, tokens):
-    '''Tokenize words into bigrams. Bigrams are two word tokens.
+    '''Tokenize words into ngrams. ngrams are n-length word tokens.
     Punctuation is considered as a separate token.'''
 
     content = read_tokens(tokens)
