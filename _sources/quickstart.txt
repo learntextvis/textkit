@@ -29,9 +29,14 @@ We can also get **bigrams** (two word tokens).
 
 .. doctest::
 
-    textkit text2words input.txt  textkit words2bigrams - > bigrams.txt
+    textkit text2words input.txt | textkit words2bigrams - > bigrams.txt
 
 Here we first convert the text to word tokens and use that as the input for the bigram tokenization.
+
+Note the use of **|** for piping one textkit command into another.
+
+Also note the dash (**-**) indicating that the input to the second command should be the
+output from the first command (i.e. standard in).
 
 Any command that uses ``words`` expects to work with **token documents** that have one word per line.
 

@@ -24,6 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="textkit 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
     <link rel="prev" title="Installation" href="install.html" />
    
   
@@ -40,6 +41,9 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="contributing.html" title="Contributing"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="install.html" title="Installation"
              accesskey="P">previous</a> |</li>
@@ -70,10 +74,13 @@ These chunks can be sentences, words, or even sections of words.</p>
 </pre></div>
 </div>
 <p>We can also get <strong>bigrams</strong> (two word tokens).</p>
-<div class="highlight-python"><div class="highlight"><pre>textkit text2words input.txt  textkit words2bigrams - &gt; bigrams.txt
+<div class="highlight-python"><div class="highlight"><pre>textkit text2words input.txt | textkit words2bigrams - &gt; bigrams.txt
 </pre></div>
 </div>
 <p>Here we first convert the text to word tokens and use that as the input for the bigram tokenization.</p>
+<p>Note the use of <strong>|</strong> for piping one textkit command into another.</p>
+<p>Also note the dash (<strong>-</strong>) indicating that the input to the second command should be the
+output from the first command (i.e. standard in).</p>
 <p>Any command that uses <code class="docutils literal"><span class="pre">words</span></code> expects to work with <strong>token documents</strong> that have one word per line.</p>
 </div>
 <div class="section" id="filter-and-transform">
@@ -123,6 +130,7 @@ Command line tools for text processing and analysis.
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="install.html" title="previous chapter">Installation</a></li>
+      <li>Next: <a href="contributing.html" title="next chapter">Contributing</a></li>
   </ul></li>
 </ul>
 <div id="searchbox" style="display: none" role="search">
