@@ -4,19 +4,47 @@
 
 The doc building system has additional requirements past the base `textkit` install.
 
-in the `docs` directory you can install these packages using:
+**Note:** All commands expect you are in the `docs` sub-directory of the project.
+So, `cd` to that directory first:
+
+```
+cd docs
+```
+
+You can install these packages using:
 
 ```
 pip install -r requirements.txt
 ```
 
-## Building docs
+## Building Docs
 
 This should be done via `make`:
 
 ```
 make html
 ```
+
+## Viewing Built Docs
+
+The built documentation should now be in the `_build/html` sub-directory
+
+You can view them by starting a webserver in that directory.
+
+If you are on python 3, this should do that:
+
+```
+cd _build/html/; python -m http.server
+```
+
+If you are on python 2, try:
+
+```
+cd _build/html/; python -m SimpleHTTPServer
+```
+
+This should allow you to visit [http://localhost:8000/](http://localhost:8000/) and
+see your updated docs.
 
 ## Deploying to gh-pages
 
@@ -38,4 +66,4 @@ make deploy
 The default deployment is to `gh-pages` which is what we want.
 The configuration of the Sphinx Deployment process is specified in `sphinx_deployment.mk` - so check there for all the configuration parameters to ensure everything is set as we want it.
 
-For more info on the options, `README_sphinx_deployment.md` comes from the 
+For more info on the options, `README_sphinx_deployment.md` comes from the
