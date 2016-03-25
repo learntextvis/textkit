@@ -3,7 +3,7 @@ import nltk
 from textkit.utils import output, read_tokens
 
 
-@click.command('ngrams')
+@click.command('words2ngrams')
 @click.argument('tokens', type=click.File('r'))
 @click.option('--sep', default=' ',
               help='Separator between words in bigram output.',
