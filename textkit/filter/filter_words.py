@@ -1,15 +1,14 @@
-import click
 import os
-from string import punctuation
+import click
 from textkit.utils import output, read_tokens
 
 
-def get_stopwords(id):
+def get_stopwords(stopword_file):
     cur_dir = os.path.dirname(os.path.realpath(__file__))
-    path = cur_dir + "/../../data/stopwords/" + id + ".txt"
+    path = cur_dir + "/../../data/stopwords/" + stopword_file + ".txt"
     stopwords = []
-    with open(path) as f:
-        stopwords = read_tokens(f)
+    with open(path) as filename:
+        stopwords = read_tokens(filename)
     return stopwords
 
 
@@ -17,13 +16,14 @@ def get_stopwords(id):
 @click.option('-l', '--language', type=click.Choice(['english', 'german']),
               default='english')
 @click.option('--custom', type=click.File('r'),
-              help='Optional token file of additional tokens to remove along with selected stop words.')
+              help='Optional token file of additional tokens to remove ' +
+              'along with selected stop words.')
 @click.argument('tokens', type=click.File('r'))
 def filterwords(language, custom, tokens):
     '''Remove stop words from tokens, returning tokens without stop words.'''
     content = read_tokens(tokens)
     stopwords = get_stopwords(language)
-    if(custom):
+    if custom:
         stopwords = stopwords + read_tokens(custom)
 
     [output(token) for token in content
