@@ -19,8 +19,6 @@ from textkit.package.tokens_to_text import tokens2text
 from textkit.stats.count_tokens import count_tokens
 from textkit.stats.top_bigrams import top_bigrams
 
-
-
 @click.group()
 def cli():
     '''Text analysis from the command line.
