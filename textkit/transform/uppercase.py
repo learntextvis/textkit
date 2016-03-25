@@ -1,7 +1,6 @@
 import click
 from textkit.utils import read_tokens, output
 
-
 @click.command()
 @click.argument('tokens', type=click.File('r'))
 def uppercase(tokens):
