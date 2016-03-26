@@ -1,6 +1,7 @@
-
+import sys
+import csv
 import click
-from textkit.utils import read_tokens, output
+from textkit.utils import read_tokens
 
 
 @click.command('count')
@@ -13,7 +14,10 @@ def count_tokens(sep, tokens):
     Tokens are sorted by top counts.'''
     content = read_tokens(tokens)
     counts = sort_counts(get_counts(content))
-    [output(sep.join(map(str, vals))) for vals in counts]
+
+    # using csv writer to ensure proper encoding of the seperator.
+    writer = csv.writer(sys.stdout, delimiter=sep)
+    [writer.writerow(map(str, vals)) for vals in counts]
 
 
 def get_counts(tokens):
