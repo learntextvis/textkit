@@ -5,12 +5,14 @@ import click
 from textkit.utils import output, read_tokens
 from textkit.coerce import coerce_types
 
+
 def read_names(names_path):
     names = []
     if names_path:
         names_doc = open(names_path, 'r')
         names = read_tokens(names_doc)
     return names
+
 
 @click.command()
 @click.argument('token_docs', type=click.Path(exists=True), nargs=-1)
@@ -22,15 +24,16 @@ def read_names(names_path):
               help="File with one name per token document, each separated " +
               "by a new line. Names file is used to set the name attribute " +
               "in the output JSON.")
-@click.option('--field', default='tokens', help="Attribute name where tokens "+
-              "will be stored in the document object.", show_default=True)
+@click.option('--field', default='tokens', help="Attribute name where " +
+              "tokens will be stored in the document object.",
+              show_default=True)
 @click.option('--columns', default=1, help="Indicate how many columns are " +
-              "present in token rows. If more then one, textkit will attempt " +
-              "to produce JSON arrays for each row.", show_default=True)
+              "present in token rows. If more then one, textkit will " +
+              "attempt to produce JSON arrays for each row.",
+              show_default=True)
 @click.option('--sep', default=',', help="Separator character between " +
-             "columns. Only used if columns is greater then 1.",
-             show_default=True)
-
+              "columns. Only used if columns is greater then 1.",
+              show_default=True)
 def tokens2json(ids, names, field, columns, sep, token_docs):
     '''Convert a set of token documents into a
     JSON array of document objects.'''
