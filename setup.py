@@ -29,7 +29,7 @@ setup(
     name='textkit',
     version=__version__,
     description='Simple text analysis from the command line',
-    long_description=open("README.md").read(),
+    long_description=open("README.rst").read(),
     packages=['textkit'],
     license='MIT',
     author='Learn Text Vis Team',
