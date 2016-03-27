@@ -16,7 +16,7 @@ def count_tokens(sep, tokens):
     counts = sort_counts(get_counts(content))
 
     # using csv writer to ensure proper encoding of the seperator.
-    writer = csv.writer(sys.stdout, delimiter=sep)
+    writer = csv.writer(click.get_text_stream('stdout'), delimiter=sep)
     [writer.writerow(map(str, vals)) for vals in counts]
 
 
