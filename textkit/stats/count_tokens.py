@@ -1,11 +1,9 @@
-import sys
-import csv
 import click
-from textkit.utils import read_tokens
+from textkit.utils import read_tokens, write_csv
 
 
 @click.command('count')
-@click.argument('tokens', type=click.File('r'))
+@click.argument('tokens', type=click.File('r'), default=click.open_file('-'))
 @click.option('--sep', default=',',
               help='Separator between token and count in output.',
               show_default=True)
@@ -16,8 +14,8 @@ def count_tokens(sep, tokens):
     counts = sort_counts(get_counts(content))
 
     # using csv writer to ensure proper encoding of the seperator.
-    writer = csv.writer(click.get_text_stream('stdout'), delimiter=sep)
-    [writer.writerow(map(str, vals)) for vals in counts]
+    rows = [map(str, vals) for vals in counts]
+    write_csv(rows, sep)
 
 
 def get_counts(tokens):
