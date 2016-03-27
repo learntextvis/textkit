@@ -1,12 +1,39 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import re
+import sys
 from setuptools import setup
+
+
+def find_version(fname):
+    """Attempts to find the version number in the file names fname.
+    Raises RuntimeError if not found.
+    """
+    version = ''
+    with open(fname, 'r') as fp:
+        reg = re.compile(r'__version__ = [\'"]([^\'"]*)[\'"]')
+        for line in fp:
+            m = reg.match(line)
+            if m:
+                version = m.group(1)
+                break
+    if not version:
+        raise RuntimeError('Cannot find version information')
+    return version
+
+__version__ = find_version("textkit/__init__.py")
+
 
 setup(
     name='textkit',
+    version=__version__,
+    description='Simple text analysis from the command line',
+    long_description=open("README.md").read(),
     packages=['textkit'],
-    version='0.0.1',
+    license='MIT',
+    author='Learn Text Vis Team',
+    author_email='landham@gmail.com',
     py_modules=['textkit'],
     url='https://github.com/learntextvis/textkit',
     keywords=['text', 'analysis', 'textkit'],
