@@ -17,6 +17,14 @@ def read_csv(file, delim):
     return lines
 
 
+def write_csv(rows, delim):
+    writer = csv.writer(click.get_text_stream('stdout'), delimiter=delim)
+    try:
+        [writer.writerow(row) for row in rows]
+    except (OSError, IOError):
+        sys.stderr.close()
+
+
 def output(line):
     try:
         click.echo(line)
