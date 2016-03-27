@@ -20,3 +20,9 @@ clean:
 	rm -rf build
 	rm -rf textkit.egg-info
 	rm -rf dist
+
+readme:
+	# This requires `pip install rst2html5`
+	# we should document - but we shouldn't need this as a requirement
+	# or dependency of textkit
+	rst2html.py README.rst > README.html

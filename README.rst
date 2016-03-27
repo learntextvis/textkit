@@ -1,5 +1,7 @@
-textkit: Simple text analysis from the command line.
+textkit
 =======
+
+Simple text analysis from the command line.
 
 Homepage: `http://learntextvis.github.io/textkit/ <http://learntextvis.github.io/textkit/>`_
 
@@ -48,6 +50,7 @@ Dev install
 To test locally, clone the repo:
 
 ::
+
     git clone git@github.com:learntextvis/textkit.git
 
 
