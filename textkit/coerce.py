@@ -49,19 +49,19 @@ def get_column_types(content):
     # number of columns
     col_count = len(content[0])
 
-    converters = [[] for i in range(col_count)]
+    all_types = [[] for i in range(col_count)]
 
     for r_ind in range(test_count):
         for col_ind, col in enumerate(content[r_ind]):
             if isint(col):
-                converters[col_ind].append('IntType')
+                all_types[col_ind].append('IntType')
             elif isfloat(col):
-                converters[col_ind].append('FloatType')
+                all_types[col_ind].append('FloatType')
             else:
-                converters[col_ind].append('StringType')
+                all_types[col_ind].append('StringType')
 
     # find if conversions are consistent across rows
-    column_types = [pick_type(types) for types in converters]
+    column_types = [pick_type(types) for types in all_types]
     return column_types
 
 
