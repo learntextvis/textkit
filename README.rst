@@ -22,19 +22,19 @@ Convert a document to a set of word tokens and remove all punctuation from the t
 
 .. code-block:: python
 
-    textkit text2words input.txt | textkit filterpunc -
+    textkit text2words input.txt | textkit filterpunc
 
 Count top used words in a text:
 
 .. code-block:: python
 
-    textkit text2words alice.txt | textkit count - | head
+    textkit text2words alice.txt | textkit count --limit 20
 
 Do the same, but with punctuation removed:
 
 .. code-block:: python
 
-    textkit text2words alice.txt | textkit filterpunc - | textkit count - | head
+    textkit text2words alice.txt | textkit filterpunc | textkit count --limit 20
 
 Installation
 ------------
