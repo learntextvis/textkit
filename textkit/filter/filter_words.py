@@ -18,7 +18,7 @@ def get_stopwords(stopword_file):
 @click.option('--custom', type=click.File('r'),
               help='Optional token file of additional tokens to remove ' +
               'along with selected stop words.')
-@click.argument('tokens', type=click.File('r'))
+@click.argument('tokens', type=click.File('r'), default=click.open_file('-'))
 def filterwords(language, custom, tokens):
     '''Remove stop words from tokens, returning tokens without stop words.'''
     content = read_tokens(tokens)
