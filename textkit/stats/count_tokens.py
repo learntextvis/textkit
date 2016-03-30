@@ -1,19 +1,29 @@
-
 import click
-from textkit.utils import read_tokens, output
+from textkit.utils import read_tokens, write_csv
 
 
 @click.command('count')
-@click.argument('tokens', type=click.File('r'))
+@click.argument('tokens', type=click.File('r'), default=click.open_file('-'))
 @click.option('--sep', default=',',
               help='Separator between token and count in output.',
               show_default=True)
-def count_tokens(sep, tokens):
+@click.option('--limit', default=-1, type=click.INT,
+              help='Only output the top N most frequent tokens')
+def count_tokens(sep, limit, tokens):
     '''Count unique tokens in a list of tokens.
     Tokens are sorted by top counts.'''
     content = read_tokens(tokens)
     counts = sort_counts(get_counts(content))
-    [output(sep.join(map(str, vals))) for vals in counts]
+
+    # we want the argument type to be an INT - but python only
+    # has support for a float infinity. So if it the limit is negative,
+    # it becomes infinite
+    if limit < 0:
+        limit = float('inf')
+
+    # using csv writer to ensure proper encoding of the seperator.
+    rows = [map(str, vals) for ind, vals in enumerate(counts) if ind < limit]
+    write_csv(rows, sep)
 
 
 def get_counts(tokens):

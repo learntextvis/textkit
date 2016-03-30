@@ -2,7 +2,7 @@ import sys
 import json
 from collections import OrderedDict
 import click
-from textkit.utils import output, read_tokens
+from textkit.utils import output, read_tokens, read_csv
 from textkit.coerce import coerce_types
 
 
@@ -27,14 +27,15 @@ def read_names(names_path):
 @click.option('--field', default='tokens', help="Attribute name where " +
               "tokens will be stored in the document object.",
               show_default=True)
-@click.option('--columns', default=1, help="Indicate how many columns are " +
-              "present in token rows. If more then one, textkit will " +
-              "attempt to produce JSON arrays for each row.",
+@click.option('--split/--no-split', default=False, help="If enabled, " +
+              "textkit will attempt to split input columns when " +
+              "packaging. This is useful when packaging multiple column " +
+              "output like counts.",
               show_default=True)
 @click.option('--sep', default=',', help="Separator character between " +
-              "columns. Only used if columns is greater then 1.",
+              "columns. Only used if split-columns flag is used.",
               show_default=True)
-def tokens2json(ids, names, field, columns, sep, token_docs):
+def tokens2json(ids, names, field, split, sep, token_docs):
     '''Convert a set of token documents into a
     JSON array of document objects.'''
 
@@ -48,13 +49,11 @@ def tokens2json(ids, names, field, columns, sep, token_docs):
             tokens_doc = sys.stdin
         else:
             tokens_doc = open(path, 'r')
-        content = read_tokens(tokens_doc)
-
-        # Split rows into columns
-        if columns > 1:
-            content = [c.split(sep) for c in content]
-            # attempt to coerce types
+        if split:
+            content = read_csv(tokens_doc, sep)
             content = coerce_types(content)
+        else:
+            content = read_tokens(tokens_doc)
 
         # ordered so that these attributes stay at the top
         doc = OrderedDict()
