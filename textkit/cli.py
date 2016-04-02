@@ -19,6 +19,7 @@ from textkit.package.tokens_to_text import tokens2text
 from textkit.stats.count_tokens import count_tokens
 from textkit.stats.top_bigrams import top_bigrams
 from textkit.install_dependencies import install_dependencies
+from textkit.download import download
 
 @click.group()
 def cli():
@@ -44,3 +45,4 @@ cli.add_command(tokens2text)
 cli.add_command(count_tokens)
 cli.add_command(top_bigrams)
 cli.add_command(install_dependencies)
+cli.add_command(download)
