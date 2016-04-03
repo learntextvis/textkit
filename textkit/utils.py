@@ -1,3 +1,4 @@
+import os
 import click
 import sys
 
@@ -13,3 +14,8 @@ def output(line):
         click.echo(line)
     except (OSError, IOError):
         sys.stderr.close()
+
+def data_dir():
+    current_directory = os.path.dirname(os.path.realpath(__file__))
+    path = "../data/"
+    return os.path.abspath(os.path.join(current_directory, path))

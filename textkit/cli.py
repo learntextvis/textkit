@@ -18,7 +18,7 @@ from textkit.package.texts_to_json import texts2json
 from textkit.package.tokens_to_text import tokens2text
 from textkit.stats.count_tokens import count_tokens
 from textkit.stats.top_bigrams import top_bigrams
-from textkit.install_dependencies import install_dependencies
+from textkit.stats.pos import words2pos
 from textkit.download import download
 
 @click.group()
@@ -44,5 +44,5 @@ cli.add_command(texts2json)
 cli.add_command(tokens2text)
 cli.add_command(count_tokens)
 cli.add_command(top_bigrams)
-cli.add_command(install_dependencies)
+cli.add_command(words2pos)
 cli.add_command(download)
