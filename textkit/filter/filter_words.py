@@ -7,7 +7,6 @@ from pkg_resources import resource_filename
 def get_stopwords(stopword_name):
     path = resource_filename(__name__, '/../../data/stopwords/' +
                              stopword_name + '.txt')
-    print(path)
     stopwords = []
     with open(path) as filename:
         stopwords = read_tokens(filename)
