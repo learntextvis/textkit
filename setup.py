@@ -37,6 +37,7 @@ setup(
     py_modules=['textkit'],
     url='https://github.com/learntextvis/textkit',
     keywords=['text', 'analysis', 'textkit'],
+    include_package_data=True,
     install_requires=[
         'click>=6.2',
         'nltk>=3.1'
