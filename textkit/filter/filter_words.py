@@ -1,11 +1,13 @@
 import os
 import click
 from textkit.utils import output, read_tokens
+from pkg_resources import resource_filename
 
 
-def get_stopwords(stopword_file):
-    cur_dir = os.path.dirname(os.path.realpath(__file__))
-    path = cur_dir + "/../../data/stopwords/" + stopword_file + ".txt"
+def get_stopwords(stopword_name):
+    path = resource_filename(__name__, '/../../data/stopwords/' +
+                             stopword_name + '.txt')
+    print(path)
     stopwords = []
     with open(path) as filename:
         stopwords = read_tokens(filename)
