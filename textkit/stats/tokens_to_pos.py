@@ -9,7 +9,7 @@ from textkit.utils import output, read_tokens, data_dir
               help='Separator between words in the output.',
               show_default=True)
 
-def words2pos(sep, tokens):
+def tokens2pos(sep, tokens):
     '''Tokenize words into ngrams. ngrams are n-length word tokens.
     Punctuation is considered as a separate token.'''
 
