@@ -36,4 +36,3 @@ def output(line):
 def data_item(search_path=''):
     path = resource_filename(__name__, '../data/' + search_path)
     return path
-    #return os.path.abspath(os.path.join(current_directory, path))
