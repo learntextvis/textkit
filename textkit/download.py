@@ -5,18 +5,13 @@ from textkit.utils import read_tokens, output
 
 
 @click.command('download')
-@click.option('--path', 
-              help='Separator between token and count in output.',
-              show_default=True)
 
-def download(path):
+def download():
     '''
 	Install required libraries.
 	Note this library will install nltk dependencies into your
 	user directory.
     '''
-    if path:
-    	nltk.data.path.append(path)
 
     click.echo("Installing nltk packages into your user directories in " +
     	"the following order of existence (first found):\n" + 
