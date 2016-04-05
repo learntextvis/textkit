@@ -9,3 +9,6 @@ dist
 .tox
 .cache
 docs/_build
+
+# Readme build
+README.html
