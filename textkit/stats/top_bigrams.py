@@ -13,7 +13,7 @@ MEASURES = dict({
 
 
 @click.command('topbigrams')
-@click.argument('tokens', type=click.File('r'))
+@click.argument('tokens', type=click.File('r'), default=click.open_file('-'))
 @click.option('--sep', default=' ',
               help='Separator between tokens and scores in output.',
               show_default=True)
