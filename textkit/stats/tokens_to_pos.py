@@ -10,8 +10,9 @@ from textkit.utils import output, read_tokens, data_item
               show_default=True)
 
 def tokens2pos(sep, tokens):
-    '''Tokenize words into ngrams. ngrams are n-length word tokens.
-    Punctuation is considered as a separate token.'''
+    '''Tokenize words into their parts of speech. Each item 
+    is the original word with its role as the second part 
+    of the item. Punctuation is considered as a separate token.'''
 
     content = read_tokens(tokens)
     nltk.data.path.append(data_item())
