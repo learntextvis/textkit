@@ -9,7 +9,7 @@ from textkit.utils import read_tokens, write_csv
               show_default=True)
 @click.option('--limit', default=-1, type=click.INT,
               help='Only output the top N most frequent tokens')
-def count_tokens(sep, limit, tokens):
+def tokens2counts(sep, limit, tokens):
     '''Count unique tokens in a list of tokens.
     Tokens are sorted by top counts.'''
     content = read_tokens(tokens)
