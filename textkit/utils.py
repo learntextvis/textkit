@@ -1,6 +1,8 @@
+import os
 import click
 import sys
 import csv
+from pkg_resources import resource_filename
 
 
 def read_tokens(file):
@@ -30,3 +32,7 @@ def output(line):
         click.echo(line)
     except (OSError, IOError):
         sys.stderr.close()
+
+def data_item(search_path=''):
+    path = resource_filename(__name__, '../data/' + search_path)
+    return path
