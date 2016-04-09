@@ -3,7 +3,7 @@ from textkit.utils import read_tokens, output
 
 
 @click.command()
-@click.argument('tokens', type=click.File('r'))
+@click.argument('tokens', type=click.File('r'), default=click.open_file('-'))
 def lowercase(tokens):
     '''Transform all tokens to lowercase.'''
     content = read_tokens(tokens)
