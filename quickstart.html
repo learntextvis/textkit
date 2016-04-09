@@ -59,41 +59,193 @@
   <div class="section" id="tutorial-quickstart">
 <span id="quickstart"></span><h1>Tutorial: Quickstart<a class="headerlink" href="#tutorial-quickstart" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><span class="target" id="module-textkit.cli"></span></div></blockquote>
+<div><span class="target" id="module-textkit.cli"></span><p>Let&#8217;s say we have a very short piece of text stored in <code class="docutils literal"><span class="pre">input.txt</span></code>. It looks something like:</p>
+<div class="highlight-python"><div class="highlight"><pre>Mrs. Bennet deigned not to make any reply, but, unable to contain
+herself, began scolding one of her daughters.
+</pre></div>
+</div>
+</div></blockquote>
+<p>What are some of the tools in textkit that we can use on this text?</p>
 <div class="section" id="convert-text-to-tokens">
 <h2>Convert Text to Tokens<a class="headerlink" href="#convert-text-to-tokens" title="Permalink to this headline">¶</a></h2>
 <p>Tokenization is the process of turning text into chunks of text.
 These chunks can be sentences, words, or even sections of words.</p>
 <p>Textkit converts a text file into a <strong>token document</strong> - where each line has one token per line.</p>
-<p>Here, we convert a text file into a token document where each token is a word.</p>
 <div class="highlight-python"><div class="highlight"><pre>textkit text2words input.txt
 </pre></div>
 </div>
-<p>Output goes to standard out. You can redirect with <code class="docutils literal"><span class="pre">&gt;</span></code>.</p>
+<p>This command converts our input.txt text file into a token document where each token is a word.</p>
+<p>The output would look something like:</p>
+<div class="highlight-python"><div class="highlight"><pre>Mrs.
+Bennet
+deigned
+not
+to
+make
+any
+reply
+,
+but
+,
+unable
+to
+contain
+herself
+,
+began
+scolding
+one
+of
+her
+daughters
+.
+</pre></div>
+</div>
+<p>This is typically the first thing we want to do when using textkit, as textkit is all about working with tokens.</p>
+<p>The output by default goes to standard out. You can redirect to a file by using <code class="docutils literal"><span class="pre">&gt;</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre>textkit text2words input.txt &gt; words.txt
 </pre></div>
 </div>
+<p>This would put our words into <code class="docutils literal"><span class="pre">words.txt</span></code>.</p>
 <p>We can also get <strong>bigrams</strong> (two word tokens).</p>
-<div class="highlight-python"><div class="highlight"><pre>textkit text2words input.txt | textkit words2bigrams - &gt; bigrams.txt
+<div class="highlight-python"><div class="highlight"><pre>textkit text2words input.txt | textkit words2bigrams &gt; bigrams.txt
 </pre></div>
 </div>
 <p>Here we first convert the text to word tokens and use that as the input for the bigram tokenization.</p>
-<p>Note the use of <strong>|</strong> for piping one textkit command into another.</p>
-<p>Also note the dash (<strong>-</strong>) indicating that the input to the second command should be the
-output from the first command (i.e. standard in).</p>
-<p>Any command that uses <code class="docutils literal"><span class="pre">words</span></code> expects to work with <strong>token documents</strong> that have one word per line.</p>
+<p>The contents of <code class="docutils literal"><span class="pre">bigrams.txt</span></code> would look like:</p>
+<div class="highlight-python"><div class="highlight"><pre>Mrs. Bennet
+Bennet deigned
+deigned not
+not to
+to make
+make any
+any reply
+reply ,
+, but
+but ,
+, unable
+unable to
+to contain
+contain herself
+herself ,
+, began
+began scolding
+scolding one
+one of
+of her
+her daughters
+daughters .
+</pre></div>
 </div>
-<div class="section" id="filter-and-transform">
-<h2>Filter and Transform<a class="headerlink" href="#filter-and-transform" title="Permalink to this headline">¶</a></h2>
-<p>Once you have your text tokenized, you can filter out tokens you might not want in your document.</p>
-<p>Let&#8217;s remove punctuation from the <code class="docutils literal"><span class="pre">words.txt</span></code> file.</p>
+<p>Note the use of <strong>|</strong> for piping one textkit command into another.</p>
+<p>With no file passed in, many textkit commands default to standard in.
+This can be indicated explicitly by using a dash (<code class="docutils literal"><span class="pre">-</span></code>) to indicate standard in.</p>
+<p>Commands that begin with <code class="docutils literal"><span class="pre">text</span></code> in textkit transform text into tokens of some sort.</p>
+<p>Any command that uses <code class="docutils literal"><span class="pre">words</span></code> expects to work with <strong>token documents</strong> that have one word per line.</p>
+<p>A bigram is just a special case of an <code class="docutils literal"><span class="pre">NGram</span></code> - so lets make some ngrams of size 5:</p>
+<div class="highlight-python"><div class="highlight"><pre>textkit text2words input.txt | textkit words2ngrams -n 5
+</pre></div>
+</div>
+<p>Which produces:</p>
+<div class="highlight-python"><div class="highlight"><pre>Mrs. Bennet deigned not to
+Bennet deigned not to make
+deigned not to make any
+not to make any reply
+to make any reply ,
+make any reply , but
+any reply , but ,
+reply , but , unable
+, but , unable to
+but , unable to contain
+, unable to contain herself
+unable to contain herself ,
+to contain herself , began
+contain herself , began scolding
+herself , began scolding one
+, began scolding one of
+began scolding one of her
+scolding one of her daughters
+one of her daughters .
+</pre></div>
+</div>
+<p>Notice the <code class="docutils literal"><span class="pre">-n</span></code> argument to indicate the number of words that should be included in each ngram.</p>
+<p>With all textkit commands, the <code class="docutils literal"><span class="pre">--help</span></code> flag shows all possible arguments for a command.</p>
+<div class="highlight-python"><div class="highlight"><pre>textkit words2ngrams --help
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>Usage: textkit words2ngrams [OPTIONS] [TOKENS]
+
+    Tokenize words into ngrams. ngrams are n-length word tokens. Punctuation
+    is considered as a separate token.
+
+Options:
+  --sep TEXT            Separator between words in bigram output.  [default: ]
+  -n, --length INTEGER  Length of the n-gram  [default: 2]
+  --help                Show this message and exit.
+</pre></div>
+</div>
+</div>
+<div class="section" id="filter-tokens">
+<h2>Filter Tokens<a class="headerlink" href="#filter-tokens" title="Permalink to this headline">¶</a></h2>
+<p>textkit includes a number of filtering capabilities that can be useful for tweaking your tokens.</p>
+<p>Notice our word and ngram tokens above include commas and periods? Let&#8217;s remove them using <code class="docutils literal"><span class="pre">filterpunc</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre>textkit text2words input.txt | textkit filterpunc
+</pre></div>
+</div>
+<p>If we don&#8217;t want to pipe these commands together, we can also just execute filters on the <code class="docutils literal"><span class="pre">words.txt</span></code> - the saved word token file.</p>
 <div class="highlight-python"><div class="highlight"><pre>textkit filterpunc words.txt
 </pre></div>
 </div>
-<p>We can also transform the tokens in various ways, such as through lowercasing everything:</p>
-<div class="highlight-python"><div class="highlight"><pre>textkit lowercaser words.txt
+<p>In natural language processing, <code class="docutils literal"><span class="pre">stop</span> <span class="pre">words</span></code> are words so common that they provide little information about a document, and so are often removed. Textkit&#8217;s <code class="docutils literal"><span class="pre">filterwords</span></code> will remove stop words from our token output.</p>
+<div class="highlight-python"><div class="highlight"><pre>textkit filterwords words.txt
 </pre></div>
 </div>
+<p>We can also just filter words that are less then a certain number of characters long:</p>
+<div class="highlight-python"><div class="highlight"><pre>textkit filterlengths -m 5 words.txt
+</pre></div>
+</div>
+<p>This would produce:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Bennet</span>
+<span class="n">deigned</span>
+<span class="n">reply</span>
+<span class="n">unable</span>
+<span class="n">contain</span>
+<span class="n">herself</span>
+<span class="n">began</span>
+<span class="n">scolding</span>
+<span class="n">daughters</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="transform-tokens">
+<h2>Transform Tokens<a class="headerlink" href="#transform-tokens" title="Permalink to this headline">¶</a></h2>
+<p>There are a number of tools in textkit to transform tokens in varous ways.</p>
+<p>Ensuring the casing of our tokens is consistent is a common text analysis preprocessing step.</p>
+<p>This is done in textkit using <code class="docutils literal"><span class="pre">lowercase</span></code> and <code class="docutils literal"><span class="pre">uppercase</span></code>. These commands work on tokens as well as raw text.</p>
+<div class="highlight-python"><div class="highlight"><pre>textkit lowercase input.txt
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>mrs. bennet deigned not to make any reply, but, unable to contain
+herself, began scolding one of her daughters.
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>textkit uppercase words.txt
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>MRS. BENNET DEIGNED NOT TO MAKE ANY REPLY, BUT, UNABLE TO CONTAIN
+HERSELF, BEGAN SCOLDING ONE OF HER DAUGHTERS.
+</pre></div>
+</div>
+</div>
+<div class="section" id="token-information-and-stats">
+<h2>Token Information and Stats<a class="headerlink" href="#token-information-and-stats" title="Permalink to this headline">¶</a></h2>
+<p>textkit is also great for finding out interesting stuff about your text.</p>
+<p>Count unique tokens with <code class="docutils literal"><span class="pre">tokens2counts</span></code>, which outputs a CSV-like output that includes the token and the count of that token in the document.</p>
+<div class="highlight-python"><div class="highlight"><pre>textkit tokens2counts words.txt
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">TODO:</span> <span class="pre">topbigrams</span></code></p>
+<p><code class="docutils literal"><span class="pre">TODO:</span> <span class="pre">tokens2pos</span></code></p>
 </div>
 <div class="section" id="package">
 <h2>Package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h2>
@@ -121,7 +273,9 @@ Command line tools for text processing and analysis.
   <ul>
 <li><a class="reference internal" href="#">Tutorial: Quickstart</a><ul>
 <li><a class="reference internal" href="#convert-text-to-tokens">Convert Text to Tokens</a></li>
-<li><a class="reference internal" href="#filter-and-transform">Filter and Transform</a></li>
+<li><a class="reference internal" href="#filter-tokens">Filter Tokens</a></li>
+<li><a class="reference internal" href="#transform-tokens">Transform Tokens</a></li>
+<li><a class="reference internal" href="#token-information-and-stats">Token Information and Stats</a></li>
 <li><a class="reference internal" href="#package">Package</a></li>
 </ul>
 </li>
