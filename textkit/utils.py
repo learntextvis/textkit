@@ -33,6 +33,7 @@ def output(line):
     except (OSError, IOError):
         sys.stderr.close()
 
+
 def data_item(search_path=''):
-    path = resource_filename(__name__, '../data/' + search_path)
+    path = resource_filename(__name__, 'data/' + search_path)
     return path

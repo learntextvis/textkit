@@ -3,7 +3,7 @@
 
 import re
 import sys
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def find_version(fname):
@@ -30,7 +30,7 @@ setup(
     version=__version__,
     description='Simple text analysis from the command line',
     long_description=open("README.rst").read(),
-    packages=['textkit'],
+    packages=find_packages(exclude=['test*', 'docs']),
     license='MIT',
     author='Learn Text Vis Team',
     author_email='landham@gmail.com',
@@ -46,6 +46,9 @@ setup(
      'console_scripts': [
         'textkit = textkit.cli:cli'
      ]
+    },
+    package_data={
+        'textkit': ['data/stopwords/english.txt', 'data/stopwords/german.txt']
     },
     classifiers=[
         'Development Status :: 3 - Alpha',
