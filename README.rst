@@ -60,7 +60,7 @@ Here is how I created my local `conda` environment for installing and testing te
 
 ::
 
-    conda create -name textkit nltk
+    conda create --name textkit nltk
 
     source activate textkit
 
