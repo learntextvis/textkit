@@ -13,6 +13,7 @@ from textkit.filter.filter_words import showstops
 from textkit.transform.lowercase import lowercase
 from textkit.transform.uppercase import uppercase
 from textkit.transform.newlines import nonewlines
+from textkit.transform.stem import stem
 from textkit.package.tokens_to_json import tokens2json
 from textkit.package.texts_to_json import texts2json
 from textkit.package.tokens_to_text import tokens2text
@@ -40,6 +41,7 @@ cli.add_command(showstops)
 cli.add_command(lowercase)
 cli.add_command(uppercase)
 cli.add_command(nonewlines)
+cli.add_command(stem)
 cli.add_command(tokens2json)
 cli.add_command(texts2json)
 cli.add_command(tokens2text)
