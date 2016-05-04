@@ -2,6 +2,7 @@ import click
 from collections import defaultdict
 from textkit.utils import read_tokens, write_csv
 
+
 @click.command('tokens2counts')
 @click.argument('tokens', type=click.File('r'), default=click.open_file('-'))
 @click.option('--sep', default=',',
@@ -22,8 +23,8 @@ def tokens2counts(sep, limit, tokens):
         limit = float('inf')
 
     # using csv writer to ensure proper encoding of the seperator.
-    rows = [map(str, vals) for ind, vals in enumerate(counts) if ind < limit]
-    write_csv(rows, sep)
+    rows = [list(map(str, vals)) for ind, vals in enumerate(counts) if ind < limit]
+    write_csv(rows, str(sep))
 
 
 def get_counts(tokens):
