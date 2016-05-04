@@ -1,6 +1,6 @@
 import click
+from collections import defaultdict
 from textkit.utils import read_tokens, write_csv
-
 
 @click.command('tokens2counts')
 @click.argument('tokens', type=click.File('r'), default=click.open_file('-'))
@@ -28,12 +28,9 @@ def tokens2counts(sep, limit, tokens):
 
 def get_counts(tokens):
     '''Count unique tokens in a list'''
-    counts = {}
+    counts = defaultdict(int)
     for token in tokens:
-        if token in counts:
-            counts[token] += 1
-        else:
-            counts[token] = 1
+        counts[token] += 1
     return counts
 
 
