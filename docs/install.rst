@@ -3,41 +3,37 @@
 Installation
 ============
 
-To test locally, clone the repo:
+Using pip
++++++++++
+
+Most users should be able to install textkit easily using pip:
+
+``pip install textkit``
+
+To ensure you have all the data files needed to run all the commands, you should then run:
+
+``textkit download``
+
+This will download some files that NLTK (a dependency of textkit) needs for certain commands.
+
+From Source
++++++++++++
+
+Textkit is developed and maintained on github, so building from source is also easy.
+
+First clone the repo:
 
 ``git clone git@github.com:learntextvis/textkit.git``
 
-Create a local virtual environment or `conda` environment.
-
-Here is how I created my local `conda` environment for installing and testing textkit:
-
-.. doctest::
-
-     conda create -name textkit nltk
-     source activate textkit
-
-Then I went into the `textkit` directory to install its requirements
+Then navigate to the `textkit` directory to install its requirements
 
 .. doctest::
 
      cd textkit
      pip install -r requirements.txt
 
-Finally, I installed the local version of textkit using the `--editable` flag:
+Finally, install the local version of textkit using the `--editable` flag:
 
 .. doctest::
 
      pip install --editable .
-
-_In the future basic installation instructions will be just the following:_
-
-textkit is available via `pip`:
-
-.. doctest::
-
-     pip install textkit
-
-Dependencies
-++++++++++++
-
-Textkit depends on NLTK 3. NLTK will be installed automatically when you run ``pip install textkit`` or ``python setup.py install``.
