@@ -58,31 +58,28 @@
             
   <div class="section" id="installation">
 <span id="install"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>To test locally, clone the repo:</p>
-<p><code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:learntextvis/textkit.git</span></code></p>
-<p>Create a local virtual environment or <code class="xref py py-obj docutils literal"><span class="pre">conda</span></code> environment.</p>
-<p>Here is how I created my local <code class="xref py py-obj docutils literal"><span class="pre">conda</span></code> environment for installing and testing textkit:</p>
-<div class="highlight-python"><div class="highlight"><pre>conda create -name textkit nltk
-source activate textkit
-</pre></div>
+<div class="section" id="using-pip">
+<h2>Using pip<a class="headerlink" href="#using-pip" title="Permalink to this headline">¶</a></h2>
+<p>Most users should be able to install textkit easily using pip:</p>
+<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">textkit</span></code></p>
+<p>To ensure you have all the data files needed to run all the commands, you should then run:</p>
+<p><code class="docutils literal"><span class="pre">textkit</span> <span class="pre">download</span></code></p>
+<p>This will download some files that NLTK (a dependency of textkit) needs for certain commands.</p>
 </div>
-<p>Then I went into the <a class="reference internal" href="api_reference.html#module-textkit" title="textkit"><code class="xref py py-obj docutils literal"><span class="pre">textkit</span></code></a> directory to install its requirements</p>
+<div class="section" id="from-source">
+<h2>From Source<a class="headerlink" href="#from-source" title="Permalink to this headline">¶</a></h2>
+<p>Textkit is developed and maintained on github, so building from source is also easy.</p>
+<p>First clone the repo:</p>
+<p><code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:learntextvis/textkit.git</span></code></p>
+<p>Then navigate to the <a class="reference internal" href="api_reference.html#module-textkit" title="textkit"><code class="xref py py-obj docutils literal"><span class="pre">textkit</span></code></a> directory to install its requirements</p>
 <div class="highlight-python"><div class="highlight"><pre>cd textkit
 pip install -r requirements.txt
 </pre></div>
 </div>
-<p>Finally, I installed the local version of textkit using the <code class="xref py py-obj docutils literal"><span class="pre">--editable</span></code> flag:</p>
+<p>Finally, install the local version of textkit using the <code class="xref py py-obj docutils literal"><span class="pre">--editable</span></code> flag:</p>
 <div class="highlight-python"><div class="highlight"><pre>pip install --editable .
 </pre></div>
 </div>
-<p>_In the future basic installation instructions will be just the following:_</p>
-<p>textkit is available via <code class="xref py py-obj docutils literal"><span class="pre">pip</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install textkit
-</pre></div>
-</div>
-<div class="section" id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<p>Textkit depends on NLTK 3. NLTK will be installed automatically when you run <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">textkit</span></code> or <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code>.</p>
 </div>
 </div>
 
@@ -101,7 +98,8 @@ Command line tools for text processing and analysis.
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Installation</a><ul>
-<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#using-pip">Using pip</a></li>
+<li><a class="reference internal" href="#from-source">From Source</a></li>
 </ul>
 </li>
 </ul>
