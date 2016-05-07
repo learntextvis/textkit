@@ -1,35 +1,33 @@
 import click
+from collections import OrderedDict
 from nltk.stem import PorterStemmer
 from nltk.stem.lancaster import LancasterStemmer
 from nltk.stem.snowball import EnglishStemmer
 from nltk.stem.wordnet import WordNetLemmatizer
 from textkit.utils import read_tokens, output
 
+ALGOS = OrderedDict([
+    ('porter', PorterStemmer),
+    ('lancaster', LancasterStemmer),
+    ('snowball', EnglishStemmer),
+    ('wordnet', WordNetLemmatizer)
+])
+
 
 @click.command()
 @click.argument('tokens', type=click.File('r'), default=click.open_file('-'))
-@click.option('--algorithm', default='porter',
-              help='Choice of stemming algorithm: porter, lancaster, snowball, wordnet',
-              type=click.STRING,
+@click.option('-a', '--algorithm', type=click.Choice(list(ALGOS.keys())),
+              default=list(ALGOS.keys())[0],
+              help='Specify which stemming algorithm to use.',
               show_default=True)
 def stem(tokens, algorithm):
-    '''Apply stemming to an iterable of tokens.'''
+    '''Stem a list of tokens to get their root.'''
     content = read_tokens(tokens)
+    stemmer = ALGOS[algorithm]()
 
-    stemmer_classes = {'porter': PorterStemmer,
-                       'lancaster': LancasterStemmer,
-                       'snowball': EnglishStemmer}
-    if algorithm.lower() == 'wordnet':
-        stemmer = WordNetLemmatizer()
+    if algorithm == 'wordnet':
         for token in content:
             output(stemmer.lemmatize(token))
-
-    elif algorithm.lower() in stemmer_classes:
-        stemmer = stemmer_classes[algorithm.lower()]()
+    else:
         for token in content:
             output(stemmer.stem(token))
-
-    else:
-        # passthrough if algorithm is invalid
-        for token in content:
-            output(token)
