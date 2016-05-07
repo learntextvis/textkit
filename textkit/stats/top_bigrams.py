@@ -1,15 +1,16 @@
 import click
 import nltk
+from collections import OrderedDict
 from textkit.utils import read_tokens, write_csv
 
 
-MEASURES = dict({
-    'likelihood': nltk.collocations.BigramAssocMeasures.likelihood_ratio,
-    'chi_sq': nltk.collocations.BigramAssocMeasures.chi_sq,
-    'pmi': nltk.collocations.BigramAssocMeasures.pmi,
-    'student_t': nltk.collocations.BigramAssocMeasures.student_t,
-    'freq': nltk.collocations.BigramAssocMeasures.raw_freq
-})
+MEASURES = OrderedDict([
+    ('likelihood', nltk.collocations.BigramAssocMeasures.likelihood_ratio),
+    ('chi_sq', nltk.collocations.BigramAssocMeasures.chi_sq),
+    ('pmi', nltk.collocations.BigramAssocMeasures.pmi),
+    ('student_t', nltk.collocations.BigramAssocMeasures.student_t),
+    ('freq', nltk.collocations.BigramAssocMeasures.raw_freq)
+])
 
 
 @click.command('topbigrams')
