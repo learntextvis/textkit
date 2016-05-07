@@ -56,9 +56,9 @@ html_static_path = ['_static']
 
 # Custom sidebar templates, maps document names to template names.
 html_sidebars = {
-    'index':    ['side-primary.html', 'searchbox.html'],
+    'index':    ['side-primary.html'],
     '**':       ['side-secondary.html', 'localtoc.html',
-                 'relations.html', 'searchbox.html']
+                 'relations.html']
 }
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'textkitdoc'
