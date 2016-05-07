@@ -8,7 +8,7 @@ from textkit.utils import output, read_tokens
 @click.option('-s', '--sep', default=' ',
               help='Separator between words in bigram output.',
               show_default=True)
-@click.option('-n', '--length', default=2,
+@click.option('-n', '--num', default=2,
               help='Length of the n-gram',
               show_default=True)
 def words2ngrams(sep, length, tokens):
