@@ -5,7 +5,7 @@ from textkit.utils import read_tokens, write_csv
 
 @click.command('tokens2counts')
 @click.argument('tokens', type=click.File('r'), default=click.open_file('-'))
-@click.option('--sep', default=',',
+@click.option('-s', '--sep', default=',',
               help='Separator between token and count in output.',
               show_default=True)
 @click.option('--limit', default=-1, type=click.INT,

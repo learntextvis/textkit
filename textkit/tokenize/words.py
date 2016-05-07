@@ -11,5 +11,3 @@ def text2words(text):
     content = '\n'.join([open(f).read() for f in text])
     tokens = nltk.word_tokenize(content)
     [output(token) for token in tokens]
-
-

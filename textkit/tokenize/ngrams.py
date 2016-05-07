@@ -5,7 +5,7 @@ from textkit.utils import output, read_tokens
 
 @click.command('words2ngrams')
 @click.argument('tokens', type=click.File('r'), default=click.open_file('-'))
-@click.option('--sep', default=' ',
+@click.option('-s', '--sep', default=' ',
               help='Separator between words in bigram output.',
               show_default=True)
 @click.option('-n', '--length', default=2,

@@ -32,7 +32,7 @@ def read_names(names_path):
               "packaging. This is useful when packaging multiple column " +
               "output like counts.",
               show_default=True)
-@click.option('--sep', default=',', help="Separator character between " +
+@click.option('-s', '--sep', default=',', help="Separator character between " +
               "columns. Only used if split-columns flag is used.",
               show_default=True)
 def tokens2json(ids, names, field, split, sep, token_docs):
