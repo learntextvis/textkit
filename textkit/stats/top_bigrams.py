@@ -1,6 +1,6 @@
 import click
 import nltk
-from textkit.utils import read_tokens, output
+from textkit.utils import read_tokens, write_csv
 
 
 MEASURES = dict({
@@ -14,7 +14,7 @@ MEASURES = dict({
 
 @click.command('topbigrams')
 @click.argument('tokens', type=click.File('r'), default=click.open_file('-'))
-@click.option('--sep', default=' ',
+@click.option('-s', '--sep', default=',',
               help='Separator between tokens and scores in output.',
               show_default=True)
 @click.option('-m', '--measure', type=click.Choice(list(MEASURES.keys())),
@@ -24,7 +24,7 @@ MEASURES = dict({
 @click.option('--freq', default=2,
               help='Minimum frequency of bi-grams to filter out.',
               show_default=True)
-@click.option('--scores/--no-scores', default=False,
+@click.option('--scores/--no-scores', default=True,
               help='Include or exclude scores in output.',
               show_default=True)
 def top_bigrams(sep, measure, freq, scores, tokens):
@@ -33,7 +33,6 @@ def top_bigrams(sep, measure, freq, scores, tokens):
     'interesting'.
     '''
 
-    output(sep)
     content = read_tokens(tokens)
     bcf = nltk.collocations.BigramCollocationFinder.from_words(content)
     bcf.apply_freq_filter(freq)
@@ -44,4 +43,4 @@ def top_bigrams(sep, measure, freq, scores, tokens):
     out = [b[0] for b in bigrams]
     if scores:
         out = [b[0] + tuple([str(b[1])]) for b in bigrams]
-    [output(sep.join(line)) for line in out]
+    write_csv(out, str(sep))
