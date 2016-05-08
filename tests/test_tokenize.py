@@ -3,7 +3,7 @@ from textkit.tokenize.words import text2words
 from textkit.tokenize.bigrams import words2bigrams
 from textkit.tokenize.punc import text2punc
 from textkit.tokenize.sentences import text2sentences
-from textkit.tokenize.ngrams import words2ngrams
+from textkit.tokenize.ngrams import words2ngrams, text2ngrams
 from tests.utils import create_single_output, create_multifile_output, compare_results
 
 
@@ -101,6 +101,19 @@ def test_words2ngrams():
         expected_tokens = ['Hello World !', 'World ! I', '! I love', 'I love go']
         create_single_output(filename, sentence)
         result = runner.invoke(words2ngrams, ['-n', 3, filename])
+        tokens = result.output.split('\n')
+        assert result.exit_code == 0
+        compare_results(tokens, expected_tokens)
+
+
+def test_text2ngrams():
+    runner = CliRunner()
+    with runner.isolated_filesystem():
+        filename = 'in.txt'
+        sentence = 'Hello World! I love go.'
+        expected_tokens = ['Hello World !', 'World ! I', '! I love', 'I love go']
+        create_single_output(filename, sentence)
+        result = runner.invoke(text2ngrams, ['-n', 3, filename])
         tokens = result.output.split('\n')
         assert result.exit_code == 0
         compare_results(tokens, expected_tokens)
