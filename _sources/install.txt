@@ -8,7 +8,7 @@ Using pip
 
 Most users should be able to install textkit easily using pip:
 
-``pip install textkit``
+``pip install -U textkit``
 
 To ensure you have all the data files needed to run all the commands, you should then run:
 
