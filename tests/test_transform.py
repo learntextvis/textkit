@@ -5,6 +5,7 @@ from textkit.transform.newlines import nonewlines
 from textkit.transform.uppercase import uppercase
 from tests.utils import create_single_output, create_multifile_output, compare_results
 
+
 def test_lowercase():
     runner = CliRunner()
     with runner.isolated_filesystem():
@@ -17,6 +18,7 @@ def test_lowercase():
         tokens = result.output.split('\n')
         assert result.exit_code == 0
         compare_results(tokens, expected_tokens)
+
 
 def test_uppercase():
     runner = CliRunner()
@@ -31,13 +33,14 @@ def test_uppercase():
         assert result.exit_code == 0
         compare_results(tokens, expected_tokens)
 
+
 def test_nonewlines():
     runner = CliRunner()
     with runner.isolated_filesystem():
         filename = 'in.txt'
         sentence = 'Hello\nWorld\n!\nI\nam\nin.\n'
         expected_tokens = ['Hello World ! I am in.']
-        
+
         create_single_output(filename, sentence)
         result = runner.invoke(nonewlines, [filename])
         tokens = result.output.split('\n')
@@ -50,8 +53,8 @@ def test_nonewlines_multifile():
     runner = CliRunner()
     with runner.isolated_filesystem():
         filenames = ['in.txt', 'in2.txt']
-        sentences = ['Hello\nWorld\n!\nI\nam\nin.', 
-            'What are you\na creature\nof mystery']
+        sentences = ['Hello\nWorld\n!\nI\nam\nin.',
+                     'What are you\na creature\nof mystery']
         expected_tokens = ['Hello World ! I am in. What are you a creature of mystery']
         create_multifile_output(filenames, sentences)
         result = runner.invoke(nonewlines, filenames)
