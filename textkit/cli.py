@@ -10,16 +10,16 @@ from textkit.filter.filter_punc import filterpunc
 from textkit.filter.filter_words import filterwords
 from textkit.filter.filter_lengths import filterlengths
 from textkit.filter.filter_words import showstops
-from textkit.transform.lowercase import lowercase
-from textkit.transform.uppercase import uppercase
+from textkit.transform.tokens_to_lower import tokens2lower
+from textkit.transform.tokens_to_upper import tokens2upper
 from textkit.transform.newlines import nonewlines
-from textkit.transform.stem import stem
+from textkit.transform.tokens_to_stem import tokens2stem
+from textkit.transform.tokens_to_counts import tokens2counts
+from textkit.transform.tokens_to_top_bigrams import tokens2topbigrams
+from textkit.transform.tokens_to_pos import tokens2pos
 from textkit.package.tokens_to_json import tokens2json
 from textkit.package.texts_to_json import texts2json
 from textkit.package.tokens_to_text import tokens2text
-from textkit.stats.tokens_to_counts import tokens2counts
-from textkit.stats.top_bigrams import top_bigrams
-from textkit.stats.tokens_to_pos import tokens2pos
 from textkit.download import download
 
 
@@ -39,14 +39,14 @@ cli.add_command(filterpunc)
 cli.add_command(filterwords)
 cli.add_command(filterlengths)
 cli.add_command(showstops)
-cli.add_command(lowercase)
-cli.add_command(uppercase)
+cli.add_command(tokens2lower)
+cli.add_command(tokens2upper)
 cli.add_command(nonewlines)
-cli.add_command(stem)
+cli.add_command(tokens2stem)
 cli.add_command(tokens2json)
 cli.add_command(texts2json)
 cli.add_command(tokens2text)
 cli.add_command(tokens2counts)
-cli.add_command(top_bigrams)
+cli.add_command(tokens2topbigrams)
 cli.add_command(tokens2pos)
 cli.add_command(download)

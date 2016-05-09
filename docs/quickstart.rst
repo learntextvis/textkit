@@ -214,11 +214,11 @@ There are a number of tools in textkit to transform tokens in varous ways.
 
 Ensuring the casing of our tokens is consistent is a common text analysis preprocessing step.
 
-This is done in textkit using ``lowercase`` and ``uppercase``. These commands work on tokens as well as raw text.
+This is done in textkit using ``tokens2lower`` and ``tokens2upper``. These commands work on tokens as well as raw text.
 
 .. doctest::
 
-    textkit lowercase input.txt
+    textkit tokens2lower input.txt
 
 .. doctest::
 
@@ -228,7 +228,7 @@ This is done in textkit using ``lowercase`` and ``uppercase``. These commands wo
 
 .. doctest::
 
-    textkit uppercase words.txt
+    textkit tokens2upper words.txt
 
 .. doctest::
 

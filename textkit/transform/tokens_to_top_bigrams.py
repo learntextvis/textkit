@@ -13,7 +13,7 @@ MEASURES = OrderedDict([
 ])
 
 
-@click.command('topbigrams')
+@click.command('tokens2topbigrams')
 @click.argument('tokens', type=click.File('r'), default=click.open_file('-'))
 @click.option('-s', '--sep', default=',',
               help='Separator between tokens and scores in output.',
@@ -28,7 +28,7 @@ MEASURES = OrderedDict([
 @click.option('--scores/--no-scores', default=True,
               help='Include or exclude scores in output.',
               show_default=True)
-def top_bigrams(sep, measure, freq, scores, tokens):
+def tokens2topbigrams(sep, measure, freq, scores, tokens):
     '''Find top most interesting bi-grams in a token document.
     Uses the --measure argument to determine what measure to use to define
     'interesting'.

@@ -23,12 +23,12 @@ Transformation
 .. toctree::
     :maxdepth: 1
 
+    scripts/tokens2lower
+    scripts/tokens2upper
+    scripts/tokens2stem
     scripts/tokens2counts
     scripts/tokens2pos
-    scripts/lowercase
-    scripts/uppercase
-    scripts/stem
-    scripts/topbigrams
+    scripts/tokens2topbigrams
 
 
 Filter
@@ -52,8 +52,8 @@ Package
     scripts/tokens2json
     scripts/tokens2text
 
-Utility
-=======
+Misc
+====
 
 .. toctree::
     :maxdepth: 1

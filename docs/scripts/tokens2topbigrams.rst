@@ -1,13 +1,13 @@
-==========
-topbigrams
-==========
+=================
+tokens2topbigrams
+=================
 
 Description
 ===========
 
 ::
 
-    b"Usage: textkit topbigrams [OPTIONS] [TOKENS]
+    b"Usage: textkit tokens2topbigrams [OPTIONS] [TOKENS]
     
       Find top most interesting bi-grams in a token document. Uses the --measure
       argument to determine what measure to use to define interesting.

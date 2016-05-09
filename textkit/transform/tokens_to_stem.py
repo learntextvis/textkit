@@ -20,7 +20,7 @@ ALGOS = OrderedDict([
               default=list(ALGOS.keys())[0],
               help='Specify which stemming algorithm to use.',
               show_default=True)
-def stem(tokens, algorithm):
+def tokens2stem(tokens, algorithm):
     '''Stem a list of tokens to get their root.'''
     content = read_tokens(tokens)
     stemmer = ALGOS[algorithm]()
