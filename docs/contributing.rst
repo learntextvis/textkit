@@ -14,9 +14,8 @@ Each command is implemented in its own file. These command files are organized i
 sub-directories:
 
 * tokenize
-* filter
 * transform
-* stats
+* filter
 * package
 
 The use of these sub-directories is primarily for developer convenience and commands
@@ -34,6 +33,9 @@ using commands that start with ``text2`` like ``text2words``.
 Token documents (text files with a token on each line) can be used and produced by
 commands that include ``words`` in the name.
 
+Tranformation functions that work on tokens should start with ``tokens2``,
+as in ``tokens2counts``.
+
 Utilities
 ---------
 
@@ -47,6 +49,8 @@ input file if your input is a token document.
 ``output`` is a light wrapper around the output capabilities of Click that prevents
 error messages if the command is exited early (like when piping to ``head``).
 
+``write_csv`` is handy for when multiple columns of data are being output.
+
 Writing New Commands
 --------------------
 
@@ -55,4 +59,4 @@ Want to contribute a new command? Great!
 textkit uses GitHub Pull Requests to incorporate other developer's work.
 
 Fork the repo and then create a branch for your new command. Create and test it,
-then submit a Pull Request. 
+then submit a Pull Request.
