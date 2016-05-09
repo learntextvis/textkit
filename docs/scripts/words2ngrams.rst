@@ -1,15 +1,15 @@
-===========
-text2ngrams
-===========
+============
+words2ngrams
+============
 
 Description
 ===========
 
 ::
 
-    Usage: textkit text2ngrams [OPTIONS] [TEXT]...
+    Usage: textkit words2ngrams [OPTIONS] [TOKENS]
     
-      Tokenize plain text into ngrams. ngrams are n-length word tokens.
+      Convert word tokens into ngrams. ngrams are n-length word tokens.
       Punctuation is considered as a separate token.
     
     Options:

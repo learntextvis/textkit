@@ -27,6 +27,9 @@ def create_docs(command, path):
     content += "=" * len("Examples") + "\n"
     print(content)
 
+    with open(path, 'w') as f:
+        f.write(content)
+
 proc = subprocess.Popen(["textkit", "--help"], stdout=subprocess.PIPE)
 out = str(proc.communicate()[0]).split('\\n')
 
@@ -55,6 +58,5 @@ for command in commands:
     if not os.path.isfile(command_doc_path):
         print('creating: ' + command_doc_path)
         create_docs(command, command_doc_path)
-        break
     else:
         print('skipping: ' + command_doc_path)

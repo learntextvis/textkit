@@ -1,15 +1,15 @@
 =========
-lowercase
+uppercase
 =========
 
 Description
 ===========
 
-Transform all tokens to lowercase.
+Transform all tokens to uppercase.
 
 ::
 
-    Usage: textkit lowercase [OPTIONS] [TOKENS]
+    Usage: textkit uppercase [OPTIONS] [TOKENS]
 
 
     Options:
