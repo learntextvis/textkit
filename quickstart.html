@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="textkit 0.0.1 documentation" href="index.html" />
-    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="next" title="Usage" href="cli.html" />
     <link rel="prev" title="Installation" href="install.html" />
    
   
@@ -42,7 +42,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="contributing.html" title="Contributing"
+          <a href="cli.html" title="Usage"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="install.html" title="Installation"
@@ -221,15 +221,15 @@ Options:
 <h2>Transform Tokens<a class="headerlink" href="#transform-tokens" title="Permalink to this headline">¶</a></h2>
 <p>There are a number of tools in textkit to transform tokens in varous ways.</p>
 <p>Ensuring the casing of our tokens is consistent is a common text analysis preprocessing step.</p>
-<p>This is done in textkit using <code class="docutils literal"><span class="pre">lowercase</span></code> and <code class="docutils literal"><span class="pre">uppercase</span></code>. These commands work on tokens as well as raw text.</p>
-<div class="highlight-python"><div class="highlight"><pre>textkit lowercase input.txt
+<p>This is done in textkit using <code class="docutils literal"><span class="pre">tokens2lower</span></code> and <code class="docutils literal"><span class="pre">tokens2upper</span></code>. These commands work on tokens as well as raw text.</p>
+<div class="highlight-python"><div class="highlight"><pre>textkit tokens2lower input.txt
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre>mrs. bennet deigned not to make any reply, but, unable to contain
 herself, began scolding one of her daughters.
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>textkit uppercase words.txt
+<div class="highlight-python"><div class="highlight"><pre>textkit tokens2upper words.txt
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre>MRS. BENNET DEIGNED NOT TO MAKE ANY REPLY, BUT, UNABLE TO CONTAIN
@@ -284,7 +284,7 @@ Command line tools for text processing and analysis.
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="install.html" title="previous chapter">Installation</a></li>
-      <li>Next: <a href="contributing.html" title="next chapter">Contributing</a></li>
+      <li>Next: <a href="cli.html" title="next chapter">Usage</a></li>
   </ul></li>
 </ul>
         </div>

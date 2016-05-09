@@ -44,4 +44,5 @@ Guide
 
    install
    quickstart
+   cli
    contributing

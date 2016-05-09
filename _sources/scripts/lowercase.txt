@@ -1,0 +1,21 @@
+=========
+lowercase
+=========
+
+Description
+===========
+
+Transform all tokens to lowercase.
+
+::
+
+    Usage: textkit lowercase [OPTIONS] [TOKENS]
+
+
+    Options:
+      --help  Show this message and exit.
+
+
+
+Examples
+========
