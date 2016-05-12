@@ -17,6 +17,7 @@ from textkit.transform.tokens_to_stem import tokens2stem
 from textkit.transform.tokens_to_counts import tokens2counts
 from textkit.transform.tokens_to_top_bigrams import tokens2topbigrams
 from textkit.transform.tokens_to_pos import tokens2pos
+from textkit.transform.tokens_to_tfidf import tokens2tfidf
 from textkit.package.tokens_to_json import tokens2json
 from textkit.package.texts_to_json import texts2json
 from textkit.package.tokens_to_text import tokens2text
@@ -50,3 +51,4 @@ cli.add_command(tokens2counts)
 cli.add_command(tokens2topbigrams)
 cli.add_command(tokens2pos)
 cli.add_command(download)
+cli.add_command(tokens2tfidf)
