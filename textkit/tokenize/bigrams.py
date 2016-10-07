@@ -13,5 +13,12 @@ def words2bigrams(sep, tokens):
     Punctuation is considered as a separate token.'''
 
     content = read_tokens(tokens)
-    bigrams = list(nltk.bigrams(content))
+    bigrams = []
+    try:
+        bigrams = list(nltk.bigrams(content))
+    except LookupError as err:
+        click.echo(message="Error with tokenization", nl=True)
+        click.echo(message="Have you run \"textkit download\"?", nl=True)
+        click.echo(message="\nOriginal Error:", nl=True)
+        click.echo(err)
     [output(sep.join(bigram)) for bigram in bigrams]

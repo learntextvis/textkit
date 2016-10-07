@@ -32,6 +32,12 @@ def text2ngrams(sep, num, text):
     '''Tokenize plain text into ngrams. ngrams are n-length word tokens.
     Punctuation is considered as a separate token.'''
     content = '\n'.join([open(f).read() for f in text])
-    tokens = nltk.word_tokenize(content)
-    ngrams = list(nltk.ngrams(tokens, num))
-    write_csv(ngrams, str(sep))
+    try:
+        tokens = nltk.word_tokenize(content)
+        ngrams = list(nltk.ngrams(tokens, num))
+        write_csv(ngrams, str(sep))
+    except LookupError as err:
+        click.echo(message="Error with tokenization", nl=True)
+        click.echo(message="Have you run \"textkit download\"?", nl=True)
+        click.echo(message="\nOriginal Error:", nl=True)
+        click.echo(err)
