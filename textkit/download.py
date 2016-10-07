@@ -17,7 +17,8 @@ def download():
                '\n'.join(nltk.data.path))
 
     extensions = [("taggers", "averaged_perceptron_tagger"),
-                  ("corpora", "wordnet")]
+                  ("corpora", "wordnet"),
+                  ("tokenizers", "punkt")]
 
     missing = check_packages_exist(extensions)
 
@@ -31,8 +32,8 @@ def check_packages_exist(extensions):
     '''
     paths = nltk.data.path  # there are usually quite a few, so we check them all.
     missing = []
-    ext_found = False
     for ext_tuple in extensions:
+        ext_found = False
         click.echo(message="Looking for " + ext_tuple[1], nl=True)
         for path in paths:
             if os.path.exists(os.path.join(path, ext_tuple[0], ext_tuple[1])):
@@ -40,6 +41,7 @@ def check_packages_exist(extensions):
                 click.echo(message="Found " + ext_tuple[1], nl=True)
                 break
         if not ext_found:
+            click.echo(message="Missing " + ext_tuple[1], nl=True)
             missing.append(ext_tuple)
 
     return missing
