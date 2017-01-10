@@ -29,6 +29,7 @@ Transformation
     scripts/tokens2counts
     scripts/tokens2pos
     scripts/tokens2topbigrams
+    scripts/transliterate
 
 
 Filter
