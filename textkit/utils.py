@@ -20,7 +20,7 @@ def read_csv(file, delim):
 
 
 def write_csv(rows, delim):
-    writer = csv.writer(click.get_text_stream('stdout'), delimiter=delim)
+    writer = csv.writer(click.get_text_stream('stdout'), delimiter=delim, lineterminator='\n')
     try:
         [writer.writerow(row) for row in rows]
     except (OSError, IOError):
