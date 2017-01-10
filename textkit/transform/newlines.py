@@ -1,4 +1,5 @@
 import click
+import re
 from textkit.utils import output
 
 
@@ -7,5 +8,5 @@ from textkit.utils import output
 def nonewlines(text):
     '''Remove newlines from a text file.'''
     content = '\n'.join([open(f).read() for f in text])
-    content = content.replace('\n', ' ').strip()
+    content = re.sub('\n|\r\n|\r', ' ', content).strip()
     output(content)
