@@ -40,7 +40,9 @@ setup(
     include_package_data=True,
     install_requires=[
         'click>=6.2',
-        'nltk>=3.1'
+        'nltk>=3.1',
+        'unidecode>=0.4.20',
+        'chardet>=2.3.0'
     ],
     entry_points={
      'console_scripts': [
