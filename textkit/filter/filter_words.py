@@ -11,7 +11,7 @@ def get_stopwords(stopword_name):
 
 
 @click.command()
-@click.option('-l', '--language', type=click.Choice(['english', 'german']),
+@click.option('-l', '--language', type=click.Choice(['english', 'german', 'danish','dutch','finnish','french','hungarian','italian','norwegian','portuguese','russian','spanish','swedish','turkish']),
               default='english')
 @click.option('--custom', type=click.File('r'),
               help='Optional token file of additional tokens to remove ' +

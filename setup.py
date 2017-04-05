@@ -50,7 +50,7 @@ setup(
      ]
     },
     package_data={
-        'textkit': ['data/stopwords/english.txt', 'data/stopwords/german.txt']
+        'textkit': ['data/stopwords/english.txt', 'data/stopwords/german.txt', 'data/stopwords/danish.txt', 'data/stopwords/dutch.txt', 'data/stopwords/finnish.txt', 'data/stopwords/french.txt', 'data/stopwords/hungarian.txt', 'data/stopwords/italian.txt', 'data/stopwords/norwegian.txt', 'data/stopwords/portuguese.txt', 'data/stopwords/russian.txt', 'data/stopwords/spanish.txt', 'data/stopwords/swedish.txt', 'data/stopwords/turkish.txt’]
     },
     classifiers=[
         'Development Status :: 3 - Alpha',
